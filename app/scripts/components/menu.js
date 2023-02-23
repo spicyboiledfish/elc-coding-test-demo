@@ -101,12 +101,21 @@ class Menu extends React.Component {
                                     searchData.map((item) => {
                                         return (
                                             <div key={item._id} className="result-item">
+                                                <img className="item-img" src={item.picture} alt={`Picture of ${item.name}`} />
+                                                <p className="item-price">
+                                                    <span>￥</span>
+                                                    {item.price}
+                                                </p>
                                                 <h3 className="item-title">{item.name}</h3>
-                                                <p>￥{item.price}</p>
-                                                <p>{item.tags.join(',')}</p>
-                                                <div className="item-body">
-                                                    <img src={item.picture} alt={`Picture of ${item.name}`} />
-                                                    <p className="item-description">{ item.about }</p>
+                                                <p className="item-description">{ item.about }</p>
+                                                <div className='item-tag'>
+                                                    {
+                                                        item.tags.map((i, j) => {
+                                                            return (
+                                                                <div className="tag" key={j}>{i}</div>
+                                                            );
+                                                        })
+                                                    }
                                                 </div>
                                             </div>
                                         );

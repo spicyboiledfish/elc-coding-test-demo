@@ -96,6 +96,8 @@ header.menu {
     .results-info {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
+        font-weight: 600;
+        margin: 20px 0;
       }
     
       .search-results {
@@ -103,6 +105,7 @@ header.menu {
         align-items: flex-start;
         width: 100%;
         z-index: 100;
+        flex-wrap: wrap;
         background-color: white;
         font-family: Helvetica, Arial, Sans-Serif;
         overflow-x: auto;
@@ -111,28 +114,83 @@ header.menu {
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
-          width: 20%;
+          flex-wrap: wrap;
+          width: 330px;
+          height: 585px;
           margin: 6px;
+          padding: 20px;
+          .item-img {
+            width: 290px;
+            height: 330px;
+            object-fit: contain;
+            background-color: #eee;
+            padding: 20px;
+          }
+          .item-price {
+            color: #fc5531;
+            font-weight: 400;
+            font-family: Verdana;
+            font-size: 24px;
+            margin: 10px 0;
+            span {
+              font-size: 12px;
+            }
+          }
           .item-title {
             margin-bottom: 6px;
+            height: 46px;
+            font-family: Verdana;
+            display: -webkit-box;				
+            -webkit-box-orient: vertical;	
+            line-clamp: 2;
+            -webkit-line-clamp: 2;			
+            overflow: hidden;			
+            text-overflow: ellipsis;
+          }
+          .item-description {
+            font-size: 14px;
+            display: -webkit-box;				
+            -webkit-box-orient: vertical;	
+            line-clamp: 5;
+            -webkit-line-clamp: 5;			
+            overflow: hidden;			
+            text-overflow: ellipsis;
           }
           .item-body {
             display: flex;
             padding: 4px;
-            img {
-              width: 150px;
-              height: 300px;
-              margin: 4px;
+          }
+          .item-tag {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 8px;
+
+            .tag {
+              color: #d48806;
+              background: #fffbe6;
+              border-color: #ffe58f;
+              border-width: 1px;
+              border-style: solid;
+              padding: 2px 8px;
+              border-radius: 2px;
+              margin-right: 3px;
+              font-size: 12px;
             }
-            .item-picture {
-              // width: 150px;
-              padding: 2px;
-              .item-description {
-                font-weight: 500;
-                text-align: justify;
-              }
+            .tag:last-child {
+              color: #08979c;
+              background: #e6fffb;
+              border-color: #87e8de;
+            }
+            .tag:nth-child(even) {
+              color: #531dab;
+              background: #f9f0ff;
+              border-color: #d3adf7;
             }
           }
+        }
+        .result-item:hover {
+          box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
         }
       }
 

@@ -19,10 +19,16 @@
     ]
 }
 */
-const data      = require('./data');
-const http      = require('http');
-const hostname  = 'localhost';
-const port      = 3035;
+const data = require('./data');
+const http = require('http');
+const hostname = 'localhost';
+const port = 3035;
+const url= require('url');
+const queryString = require('querystring');
+
+const normalizeString = (term) => { 
+    return term.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+}
 
 /** 
  * Start the Node Server Here...
@@ -34,10 +40,32 @@ const port      = 3035;
  */
 http.createServer(function (req, res) {
     // .. Here you can create your data response in a JSON format
+
+    res.setHeader('Content-Type','application/json;charset=utf8');
+    res.setHeader('Access-Control-Allow-Origin','*'); 
+
+    const urlparse = url.parse(req.url, true);
+    const search = urlparse.search;
+    console.log('serach', search);
+    let items = []
     
-    
-    res.write("Response goes in here..."); // Write out the default response
-    res.end(); //end the response
+    if (urlparse.pathname === '/search' && req.method === 'GET') {
+        if (search) {
+            const [, query] = search.split('?');
+            const searchName = normalizeString(queryString.parse(query).name);
+            items = data.filter(item => {
+                const name = normalizeString(item.name);
+                return name.includes(searchName);
+            });
+        }
+
+        res.writeHead( 200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ data: items }));
+
+    } else {
+        res.write("Response goes in here..."); // Write out the default response
+        res.end(); //end the response
+    }
 }).listen( port );
 
 

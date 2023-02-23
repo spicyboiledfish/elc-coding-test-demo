@@ -13,7 +13,9 @@ class Menu extends React.Component {
     constructor() {
         super();
         this.state = {
-            showingSearch: false
+            showingSearch: false,
+            searchName: '',
+            searchData: []
         };
     }
 
@@ -25,7 +27,9 @@ class Menu extends React.Component {
     showSearchContainer(e) {
         e.preventDefault();
         this.setState({
-            showingSearch: !this.state.showingSearch
+            showingSearch: !this.state.showingSearch,
+            searchName: '',
+            searchData: []
         });
     }
 
@@ -38,7 +42,19 @@ class Menu extends React.Component {
         
         // Start Here
         // ...
-        
+        e.preventDefault();
+        this.setState({ searchName: e.target.value });
+        if (e.target.value) {
+            fetch(`http://localhost:3035/search?name=${e.target.value}`)
+                .then(res => res.json())
+                .then(searchData => {
+                    console.log('111', searchData);
+                    const { data } = searchData;
+                    this.setState({ searchData: data })
+                });
+        } else {
+            this.setState({ searchData: [] });
+        }
 
     }
 
@@ -49,6 +65,8 @@ class Menu extends React.Component {
      * @memberof App
     */
     render() {
+        const { showingSearch, searchData } = this.state;
+        console.log('searchData', searchData);
         return (
             <header className="menu">
                 <div className="menu-container">
@@ -69,11 +87,34 @@ class Menu extends React.Component {
                         </nav>
                     </div>
                 </div>
-                <div className={(this.state.showingSearch ? "showing " : "") + "search-container"}>
+                <div className={(showingSearch ? "showing " : "") + "search-container"}>
                     <input type="text" onChange={(e) => this.onSearch(e)} />
                     <a href="#" onClick={(e) => this.showSearchContainer(e)}>
                         <i className="material-icons close">close</i>
                     </a>
+                    {
+                        searchData.length > 0 && (
+                        <>
+                            <p className="results-info">{`Search Results show ${searchData.length} products` }</p>
+                            <div className="search-results">
+                                {
+                                    searchData.map((item) => {
+                                        return (
+                                            <div key={item._id} className="result-item">
+                                                <h3 className="item-title">{item.name}</h3>
+                                                <p>￥{item.price}</p>
+                                                <p>{item.tags.join(',')}</p>
+                                                <div className="item-body">
+                                                    <img src={item.picture} alt={`Picture of ${item.name}`} />
+                                                    <p className="item-description">{ item.about }</p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                }
+                            </div>
+                        </>
+                    )}
                 </div>
             </header>
         );

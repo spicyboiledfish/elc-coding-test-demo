@@ -93,4 +93,47 @@ header.menu {
         }
     }
 
+    .results-info {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+    
+      .search-results {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        z-index: 100;
+        background-color: white;
+        font-family: Helvetica, Arial, Sans-Serif;
+        overflow-x: auto;
+        .result-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 20%;
+          margin: 6px;
+          .item-title {
+            margin-bottom: 6px;
+          }
+          .item-body {
+            display: flex;
+            padding: 4px;
+            img {
+              width: 150px;
+              height: 300px;
+              margin: 4px;
+            }
+            .item-picture {
+              // width: 150px;
+              padding: 2px;
+              .item-description {
+                font-weight: 500;
+                text-align: justify;
+              }
+            }
+          }
+        }
+      }
+
 }

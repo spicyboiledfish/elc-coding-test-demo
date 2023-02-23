@@ -46,7 +46,6 @@ http.createServer(function (req, res) {
 
     const urlparse = url.parse(req.url, true);
     const search = urlparse.search;
-    console.log('serach', search);
     let items = []
     
     if (urlparse.pathname === '/search' && req.method === 'GET') {

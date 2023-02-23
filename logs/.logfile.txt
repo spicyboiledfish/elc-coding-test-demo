@@ -91,3 +91,17 @@
 [23/2/2023 -- 11:41]  Sass ran on files
 [23/2/2023 -- 11:42]  Sass ran on files
 [23/2/2023 -- 11:42]  Sass ran on files
+[23/2/2023 -- 11:44]  Info task started
+[23/2/2023 -- 11:46]  Scripts ran on main.js
+[23/2/2023 -- 11:47]  Scripts ran on main.js
+[23/2/2023 -- 11:47]  Scripts ran on main.js
+[23/2/2023 -- 11:47]  Scripts ran on main.js
+[23/2/2023 -- 11:48]  Scripts ran on main.js
+[23/2/2023 -- 11:48]  Scripts ran on main.js
+[23/2/2023 -- 11:49]  Scripts ran on main.js
+[23/2/2023 -- 11:49]  Scripts ran on main.js
+[23/2/2023 -- 11:49]  Scripts ran on main.js
+[23/2/2023 -- 11:50]  Scripts ran on main.js
+[23/2/2023 -- 11:50]  Scripts ran on main.js
+[23/2/2023 -- 11:51]  Scripts ran on main.js
+[23/2/2023 -- 11:51]  Scripts ran on main.js

@@ -15,7 +15,7 @@ class Menu extends React.Component {
         this.state = {
             showingSearch: false,
             searchName: '',
-            searchData: []
+            searchData: [],
         };
     }
 
@@ -47,8 +47,7 @@ class Menu extends React.Component {
         if (e.target.value) {
             fetch(`http://localhost:3035/search?name=${e.target.value}`)
                 .then(res => res.json())
-                .then(searchData => {
-                    console.log('111', searchData);
+                .then(searchData => {                    
                     const { data } = searchData;
                     this.setState({ searchData: data })
                 });
@@ -66,7 +65,6 @@ class Menu extends React.Component {
     */
     render() {
         const { showingSearch, searchData } = this.state;
-        console.log('searchData', searchData);
         return (
             <header className="menu">
                 <div className="menu-container">
@@ -93,7 +91,7 @@ class Menu extends React.Component {
                         <i className="material-icons close">close</i>
                     </a>
                     {
-                        searchData.length > 0 && (
+                        searchData.length > 0 && 
                         <>
                             <p className="results-info">{`Search Results show ${searchData.length} products` }</p>
                             <div className="search-results">
@@ -123,7 +121,7 @@ class Menu extends React.Component {
                                 }
                             </div>
                         </>
-                    )}
+                    }
                 </div>
             </header>
         );

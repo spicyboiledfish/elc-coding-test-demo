@@ -54,7 +54,7 @@ http.createServer(function (req, res) {
             const searchName = normalizeString(queryString.parse(query).name);
             items = data.filter(item => {
                 const name = normalizeString(item.name);
-                return name.includes(searchName);
+                return name.includes(searchName) && item.isActive;
             });
         }
 
